@@ -35,10 +35,6 @@
   "Message": {
     "dataSource": null
   },
-  "note": {
-    "dataSource": "db",
-    "public": true
-  },
   "Bills": {
     "dataSource": "db",
     "public": true,

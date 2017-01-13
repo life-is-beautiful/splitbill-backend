@@ -1,0 +1,43 @@
+{
+  "name": "Items",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "tax": {
+      "type": "boolean"
+    },
+    "price": {
+      "type": "boolean"
+    },
+    "discount": {
+      "type": "boolean"
+    },
+    "serviceCharge": {
+      "type": "boolean"
+    },
+    "tip": {
+      "type": "boolean"
+    },
+    "bill_id": {
+      "type": "number"
+    },
+    "user_id": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "comments": "(Paid / Awaiting Confirmation / Unpaid)"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Bills",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "transactionDate": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string",
+      "id": false,
+      "required": false,
+      "comments": ""
+    },
+    "items": {
+      "type": "array",
+      "comments": "list of items"
+    },
+    "totalTax": {
+      "type": "boolean",
+      "comments": ""
+    },
+    "totalTip": {
+      "type": "boolean"
+    },
+    "totalServiceCharge": {
+      "type": "boolean"
+    },
+    "totalDiscount": {
+      "type": "boolean"
+    },
+    "totalAmount": {
+      "type": "boolean"
+    },
+    "billStatus": {
+      "type": "string",
+      "comments": "(Active / Inactive)"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

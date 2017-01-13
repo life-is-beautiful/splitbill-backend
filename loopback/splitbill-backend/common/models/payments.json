@@ -1,0 +1,27 @@
+{
+  "name": "Payments",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "date": {
+      "type": "date"
+    },
+    "comment": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "boolean"
+    },
+    "bill_id": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

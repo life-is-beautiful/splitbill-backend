@@ -32,9 +32,6 @@
     "dataSource": "db",
     "public": false
   },
-  "Message": {
-    "dataSource": null
-  },
   "Bills": {
     "dataSource": "db",
     "public": true,

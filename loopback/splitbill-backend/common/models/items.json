@@ -31,6 +31,9 @@
     "user_id": {
       "type": "number"
     },
+    "quantity": {
+      "type": "boolean"
+    },
     "status": {
       "type": "string",
       "comments": "(Paid / Awaiting Confirmation / Unpaid)"

@@ -8,37 +8,33 @@
   },
   "properties": {
     "description": {
-      "type": "string",
-      "id": false,
-      "required": false,
-      "comments": ""
+      "type": "string"
     },
-    "items": {
-      "type": "array",
-      "comments": "list of items"
-    },
-    "status": {
-      "type": "string",
-      "comments": "(Active / Inactive)"
+    "date": {
+      "type": "date"
     },
     "amount": {
+      "type": "boolean"
+    },
+    "tax": {
       "type": "boolean"
     },
     "discount": {
       "type": "boolean"
     },
-    "serviceCharge": {
-      "type": "boolean"
-    },
-    "tax": {
-      "type": "boolean",
-      "comments": ""
-    },
     "tip": {
       "type": "boolean"
     },
-    "date": {
-      "type": "date"
+    "serviceCharge": {
+      "type": "boolean",
+      "comments": ""
+    },
+    "status": {
+      "type": "string",
+      "comments": "(Active / Inactive)"
+    },
+    "items": {
+      "type": "array"
     }
   },
   "validations": [],

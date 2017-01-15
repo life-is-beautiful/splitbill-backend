@@ -7,14 +7,11 @@
     "validateUpsert": true
   },
   "properties": {
+    "bill_id": {
+      "type": "number"
+    },
     "name": {
       "type": "string"
-    },
-    "tax": {
-      "type": "boolean"
-    },
-    "price": {
-      "type": "boolean"
     },
     "discount": {
       "type": "boolean"
@@ -22,21 +19,24 @@
     "serviceCharge": {
       "type": "boolean"
     },
-    "tip": {
+    "quantity": {
       "type": "boolean"
     },
-    "bill_id": {
-      "type": "number"
+    "tax": {
+      "type": "boolean"
     },
-    "user_id": {
-      "type": "number"
+    "price": {
+      "type": "boolean"
     },
-    "quantity": {
+    "tip": {
       "type": "boolean"
     },
     "status": {
       "type": "string",
       "comments": "(Paid / Awaiting Confirmation / Unpaid)"
+    },
+    "customer_id": {
+      "type": "number"
     }
   },
   "validations": [],

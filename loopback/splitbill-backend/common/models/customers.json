@@ -1,20 +1,23 @@
 {
-  "name": "Payments",
-  "base": "PersistedModel",
+  "name": "Customers",
+  "base": "User",
   "strict": false,
   "idInjection": false,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "date": {
-      "type": "date"
-    },
-    "comment": {
+    "nickname": {
       "type": "string"
     },
-    "amount": {
-      "type": "boolean"
+    "device": {
+      "type": "string"
+    },
+    "fullname": {
+      "type": "string"
+    },
+    "email": {
+      "required": false
     }
   },
   "validations": [],

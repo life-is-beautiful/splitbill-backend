@@ -14,11 +14,17 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "db",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "db",
-    "public": false
+    "public": false,
+    "relations": {
+      "user": {
+        "model": "Customer"
+      }
+    }
   },
   "ACL": {
     "dataSource": "db",
@@ -45,6 +51,12 @@
     "$resolved": true
   },
   "Payments": {
+    "dataSource": "db",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Customers": {
     "dataSource": "db",
     "public": true,
     "$promise": {},

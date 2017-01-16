@@ -7,9 +7,11 @@ module.exports = function(Services) {
     Customer.findOne({fields: {id: false}, where:{device:device}},
       function(err,instance){
         if(instance===null){
-          cb(null,null);
+          cb(null,{errorCode:"01"});
         }else{
-          cb(null,instance);
+          var finalInstance = instance;
+          finalInstance.errorCode = "00";
+          cb(null,finalInstance);
         }
       });
   }

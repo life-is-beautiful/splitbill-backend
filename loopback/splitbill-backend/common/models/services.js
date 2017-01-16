@@ -2,21 +2,28 @@
 
 module.exports = function(Services) {
 
-  Services.remoteMethod('splashScreen',{
-    accepts: {arg: 'deviceId', type: 'string', required: true},
-    http: {path: '/splashScreen', verb: 'post'},
-    returns: {arg: 'status', type: 'Object'}
-  })
-
-  Services.splashScreen = function(deviceId, cb) {
-
-    //query the database for a single matching dog
-    Customer.findOne({where: {device: deviceId}}, function(err, dog) {
-
-      //return only the location property of the dog
-      cb(null, dog.location);
-    });
+  Services.splashScreen = function(device, cb) {
+    var Customer = Services.app.models.Customers;
+    Customer.findOne({fields: {id: false}, where:{device:device}},
+      function(err,instance){
+        if(instance===null){
+          cb(null,null);
+        }else{
+          cb(null,instance);
+        }
+      });
   }
+
+  Services.remoteMethod(
+    'splashScreen',
+    {
+      accepts: [
+        {arg: 'device', type: 'string'}
+      ],
+      returns: {arg: 'data', type: 'object', root: true},
+      http: {path: '/splashScreen', verb: 'post'}
+    }
+  );
 
   Services.remoteMethod('registerUser',{
     http: {path: '/registerUser', verb: 'post'},

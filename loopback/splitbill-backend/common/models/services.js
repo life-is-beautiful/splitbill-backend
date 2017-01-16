@@ -16,19 +16,37 @@ module.exports = function(Services) {
       });
   }
 
+  Services.registerUser = function(data, cb) {
+    var Customer = Services.app.models.Customers;
+    Customer.create(data,
+      function(err,instance){
+        if(instance===null){
+          cb(null,{errorCode:"01"});
+        }else{
+          var finalInstance = instance;
+          finalInstance.errorCode = "00";
+          cb(null,finalInstance);
+        }
+      });
+  }
+
   Services.remoteMethod(
     'splashScreen',
     {
-      accepts: [
-        {arg: 'device', type: 'string'}
-      ],
+      accepts: {arg: 'device', type: 'string'},
       returns: {arg: 'data', type: 'object', root: true},
       http: {path: '/splashScreen', verb: 'post'}
     }
   );
 
-  Services.remoteMethod('registerUser',{
-    http: {path: '/registerUser', verb: 'post'},
-    returns: {arg: 'ok', type: 'Object'}
-  })
+  Services.remoteMethod(
+    'registerUser',
+    {
+      accepts: [
+        {arg: 'data', type: 'object', http: {source: 'body'}}
+      ],
+      returns: {arg: 'data', type: 'object', root: true},
+      http: {path: '/registerUser', verb: 'post'}
+    }
+  );
 };

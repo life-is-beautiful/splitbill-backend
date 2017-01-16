@@ -16,6 +16,15 @@ module.exports = function(Services) {
       });
   }
 
+  Services.remoteMethod(
+    'splashScreen',
+    {
+      accepts: {arg: 'device', type: 'string'},
+      returns: {arg: 'data', type: 'object', root: true},
+      http: {path: '/splashScreen', verb: 'post'}
+    }
+  );
+
   Services.registerUser = function(data, cb) {
     var Customer = Services.app.models.Customers;
     Customer.create(data,
@@ -31,15 +40,6 @@ module.exports = function(Services) {
   }
 
   Services.remoteMethod(
-    'splashScreen',
-    {
-      accepts: {arg: 'device', type: 'string'},
-      returns: {arg: 'data', type: 'object', root: true},
-      http: {path: '/splashScreen', verb: 'post'}
-    }
-  );
-
-  Services.remoteMethod(
     'registerUser',
     {
       accepts: [
@@ -47,6 +47,56 @@ module.exports = function(Services) {
       ],
       returns: {arg: 'data', type: 'object', root: true},
       http: {path: '/registerUser', verb: 'post'}
+    }
+  );
+
+  Services.dashboardOwed = function(data, cb) {
+    var Customer = Services.app.models.Customers;
+    Customer.findOne({fields: {id: false}, where:{device:device}},
+      function(err,instance){
+        if(instance===null){
+          cb(null,{errorCode:"01"});
+        }else{
+          var finalInstance = instance;
+          finalInstance.errorCode = "00";
+          cb(null,finalInstance);
+        }
+      });
+  }
+
+  Services.remoteMethod(
+    'dashboardOwed',
+    {
+      accepts: [
+        {arg: 'data', type: 'object', http: {source: 'body'}}
+      ],
+      returns: {arg: 'data', type: 'object', root: true},
+      http: {path: '/dashboardOwed', verb: 'post'}
+    }
+  );
+
+  Services.dashboardOwing = function(data, cb) {
+    var Customer = Services.app.models.Customers;
+    Customer.findOne({fields: {id: false}, where:{device:device}},
+      function(err,instance){
+        if(instance===null){
+          cb(null,{errorCode:"01"});
+        }else{
+          var finalInstance = instance;
+          finalInstance.errorCode = "00";
+          cb(null,finalInstance);
+        }
+      });
+  }
+
+  Services.remoteMethod(
+    'dashboardOwing',
+    {
+      accepts: [
+        {arg: 'data', type: 'object', http: {source: 'body'}}
+      ],
+      returns: {arg: 'data', type: 'object', root: true},
+      http: {path: '/dashboardOwing', verb: 'post'}
     }
   );
 };

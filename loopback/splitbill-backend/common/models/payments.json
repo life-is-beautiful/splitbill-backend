@@ -15,6 +15,9 @@
     },
     "amount": {
       "type": "boolean"
+    },
+    "bill_id": {
+      "type": "number"
     }
   },
   "validations": [],

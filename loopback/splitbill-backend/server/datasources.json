@@ -2,5 +2,27 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "cloudant": {
+    "host": "1c3a9675-7e7c-40bd-95b1-dd0db84a1440-bluemix.cloudant.com",
+    "port": 443,
+    "name": "cloudant",
+    "connector": "couch",
+    "db": "splitbill",
+    "protocol": "https",
+    "auth": {
+      "admin": {
+        "username": "1c3a9675-7e7c-40bd-95b1-dd0db84a1440-bluemix",
+        "password": "827f031ecb7af8af52aa6ff900d3c566062e99cbc72981a26d46099ae6a2c4ec"
+      },
+      "reader": {
+        "username": "bovesterairthedgertylini",
+        "password": "d3f0f93b2dc04343344eba6e588f90e20adc9bf8"
+      },
+      "writer": {
+        "username": "allecouldinglaclelsomene",
+        "password": "46b527ea2df8dcbefafff938640cca1e645f9dba"
+      }
+    }
   }
 }

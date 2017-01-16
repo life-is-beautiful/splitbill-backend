@@ -14,10 +14,10 @@
       "type": "string"
     },
     "amount": {
-      "type": "boolean"
+      "type": "number"
     },
     "bill_id": {
-      "type": "number"
+      "type": "string"
     }
   },
   "validations": [],

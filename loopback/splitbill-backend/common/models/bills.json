@@ -14,20 +14,19 @@
       "type": "date"
     },
     "amount": {
-      "type": "boolean"
+      "type": "number"
     },
     "tax": {
-      "type": "boolean"
+      "type": "number"
     },
     "discount": {
-      "type": "boolean"
+      "type": "number"
     },
     "tip": {
-      "type": "boolean"
+      "type": "number"
     },
     "serviceCharge": {
-      "type": "boolean",
-      "comments": ""
+      "type": "number"
     },
     "status": {
       "type": "string",

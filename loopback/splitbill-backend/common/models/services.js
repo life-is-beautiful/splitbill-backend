@@ -2,7 +2,7 @@
 
 module.exports = function(Services) {
   Services.remoteMethod('splashScreen',{
-    http: {path: '/splashScreen', verb: 'get'},
+    http: {path: '/splashScreen', verb: 'post'},
     returns: {arg: 'status', type: 'Object'}
   })
 

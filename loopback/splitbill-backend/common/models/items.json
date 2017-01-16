@@ -8,35 +8,35 @@
   },
   "properties": {
     "bill_id": {
-      "type": "number"
+      "type": "string"
     },
     "name": {
       "type": "string"
     },
     "discount": {
-      "type": "boolean"
+      "type": "number"
     },
     "serviceCharge": {
-      "type": "boolean"
+      "type": "number"
     },
     "quantity": {
-      "type": "boolean"
+      "type": "number"
     },
     "tax": {
-      "type": "boolean"
+      "type": "number"
     },
     "price": {
-      "type": "boolean"
+      "type": "number"
     },
     "tip": {
-      "type": "boolean"
+      "type": "number"
     },
     "status": {
       "type": "string",
       "comments": "(Paid / Awaiting Confirmation / Unpaid)"
     },
     "customer_id": {
-      "type": "number"
+      "type": "string"
     }
   },
   "validations": [],

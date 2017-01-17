@@ -29,12 +29,14 @@ module.exports = function(Services) {
     var Customer = Services.app.models.Customers;
     Customer.create(data,
       function(err,instance){
-        if(instance===null){
-          cb(null,{errorCode:"01"});
-        }else{
+        if(instance!==null){
           var finalInstance = instance;
+          console.log(err);
+          console.log(instance);
           finalInstance.errorCode = "00";
           cb(null,finalInstance);
+        }else{
+          cb(null,{errorCode:"01"});
         }
       });
   }

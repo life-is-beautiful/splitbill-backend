@@ -7,7 +7,7 @@
     "validateUpsert": true
   },
   "properties": {
-    "bill_id": {
+    "billId": {
       "type": "string"
     },
     "name": {
@@ -35,12 +35,23 @@
       "type": "string",
       "comments": "(Paid / Awaiting Confirmation / Unpaid)"
     },
-    "customer_id": {
+    "customerId": {
       "type": "string"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "bill": {
+      "type": "belongsTo",
+      "model": "Bills",
+      "foreignKey": ""
+    },
+    "customer": {
+      "type": "belongsTo",
+      "model": "Customers",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

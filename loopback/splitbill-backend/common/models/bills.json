@@ -31,13 +31,21 @@
     "status": {
       "type": "string",
       "comments": "(Active / Inactive)"
-    },
-    "items": {
-      "type": "array"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "items": {
+      "type": "hasMany",
+      "model": "Items",
+      "foreignKey": "billId"
+    },
+    "payments": {
+      "type": "hasMany",
+      "model": "Payments",
+      "foreignKey": "billId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

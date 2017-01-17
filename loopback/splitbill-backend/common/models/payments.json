@@ -7,6 +7,12 @@
     "validateUpsert": true
   },
   "properties": {
+    "giverId": {
+      "type": "string"
+    },
+    "receiverId": {
+      "type": "string"
+    },
     "date": {
       "type": "date"
     },
@@ -16,12 +22,28 @@
     "amount": {
       "type": "number"
     },
-    "bill_id": {
+    "billId": {
       "type": "string"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "bill": {
+      "type": "belongsTo",
+      "model": "Bills",
+      "foreignKey": ""
+    },
+    "give": {
+      "type": "belongsTo",
+      "model": "Customers",
+      "foreignKey": ""
+    },
+    "receive": {
+      "type": "belongsTo",
+      "model": "Customers",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

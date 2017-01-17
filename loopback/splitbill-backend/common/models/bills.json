@@ -28,6 +28,12 @@
     "serviceCharge": {
       "type": "number"
     },
+    "total": {
+      "type": "number"
+    },
+    "owedId": {
+      "type": "string"
+    },
     "status": {
       "type": "string",
       "comments": "(Active / Inactive)"
@@ -44,6 +50,11 @@
       "type": "hasMany",
       "model": "Payments",
       "foreignKey": "billId"
+    },
+    "owed": {
+      "type": "belongsTo",
+      "model": "Customers",
+      "foreignKey": "owedId"
     }
   },
   "acls": [],

@@ -35,7 +35,7 @@
       "type": "string",
       "comments": "(Paid / Awaiting Confirmation / Unpaid)"
     },
-    "customerId": {
+    "owingId": {
       "type": "string"
     }
   },
@@ -46,10 +46,10 @@
       "model": "Bills",
       "foreignKey": ""
     },
-    "customer": {
+    "owing": {
       "type": "belongsTo",
       "model": "Customers",
-      "foreignKey": ""
+      "foreignKey": "owingId"
     }
   },
   "acls": [],

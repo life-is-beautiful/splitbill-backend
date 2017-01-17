@@ -31,17 +31,17 @@
     "bill": {
       "type": "belongsTo",
       "model": "Bills",
-      "foreignKey": ""
+      "foreignKey": "billId"
     },
-    "give": {
+    "owing": {
       "type": "belongsTo",
       "model": "Customers",
-      "foreignKey": ""
+      "foreignKey": "owingId"
     },
-    "receive": {
+    "owed": {
       "type": "belongsTo",
       "model": "Customers",
-      "foreignKey": ""
+      "foreignKey": "owedId"
     }
   },
   "acls": [],

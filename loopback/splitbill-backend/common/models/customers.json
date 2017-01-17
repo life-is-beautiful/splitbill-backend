@@ -18,6 +18,9 @@
     },
     "email": {
       "required": false
+    },
+    "password": {
+      "required": false
     }
   },
   "validations": [],

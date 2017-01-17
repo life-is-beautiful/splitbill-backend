@@ -24,7 +24,28 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "bills": {
+      "type": "hasMany",
+      "model": "Items",
+      "foreignKey": "owedId"
+    },
+    "items": {
+      "type": "hasMany",
+      "model": "Items",
+      "foreignKey": "owingId"
+    },
+    "owingpayments": {
+      "type": "hasMany",
+      "model": "Payments",
+      "foreignKey": "owingId"
+    },
+    "owedpayments": {
+      "type": "hasMany",
+      "model": "Payments",
+      "foreignKey": "owedId"
+    },
+  },
   "acls": [
     {
       "accessType": "*",

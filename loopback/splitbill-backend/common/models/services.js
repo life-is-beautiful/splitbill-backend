@@ -4,9 +4,11 @@ module.exports = function(Services) {
 
   Services.splashScreen = function(device, cb) {
     var Customer = Services.app.models.Customers;
+    console.log(device);
     Customer.findOne({fields: {id: false}, where:{device:device}},
+
       function(err,instance){
-        if(instance!==null){
+        if(instance!==null && typeof device !== 'undefined'){
           var finalInstance = instance;
           finalInstance.errorCode = "00";
           cb(null,finalInstance);
@@ -29,7 +31,7 @@ module.exports = function(Services) {
     var Customer = Services.app.models.Customers;
     Customer.create(data,
       function(err,instance){
-        if(instance!==null){
+        if(instance!==null && typeof data !== 'undefined'){
           var finalInstance = instance;
           finalInstance.errorCode = "00";
           cb(null,finalInstance);
@@ -62,10 +64,11 @@ module.exports = function(Services) {
         include: 'bills'
       },
       function(err,instance){
-        console.log(instance);
-        if(instance!==null){
+
+        if(instance!==null && typeof username !== 'undefined'){
           var finalInstance = instance;
           finalInstance.errorCode = "00";
+          console.log(finalInstance);
           cb(null,finalInstance);
         }else{
           cb(null,{errorCode:"01"});
@@ -110,12 +113,13 @@ module.exports = function(Services) {
     var Customer = Services.app.models.Customers;
     Customer.findOne({fields: {id: false}, where:{device:device}},
       function(err,instance){
-        if(instance===null){
-          cb(null,{errorCode:"01"});
-        }else{
+        if(instance!==null && typeof username !== 'undefined'){
           var finalInstance = instance;
           finalInstance.errorCode = "00";
+          console.log(finalInstance);
           cb(null,finalInstance);
+        }else{
+          cb(null,{errorCode:"01"});
         }
       });
   }

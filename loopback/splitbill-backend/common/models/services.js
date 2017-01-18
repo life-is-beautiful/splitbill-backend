@@ -50,25 +50,56 @@ module.exports = function(Services) {
     }
   );
 
-  Services.dashboardOwed = function(data, cb) {
-    var Customer = Services.app.models.Customers;
-    Customer.findOne({fields: {id: false}, where:{device:device}},
+  Services.dashboardOwed = function(username, cb) {
+    var Customers = Services.app.models.Customers;
+    Customers.find({
+        fields: {
+          username: true
+        },
+        where:{
+          username:username
+        },
+        include: 'bills'
+      },
       function(err,instance){
-        if(instance===null){
-          cb(null,{errorCode:"01"});
-        }else{
+        console.log(instance);
+        if(instance!==null){
           var finalInstance = instance;
           finalInstance.errorCode = "00";
           cb(null,finalInstance);
+        }else{
+          cb(null,{errorCode:"01"});
         }
-      });
+      }
+    );
+    // var Bills = Services.app.models.Bills;
+    // Bills.find({
+    //     fields: {
+    //       id: true, total:true, description:true
+    //     },
+    //     where:{
+    //       owedId:device, status:'Active'
+    //     },
+    //     include: 'owed'
+    //   },
+    //   function(err,instance){
+    //     console.log(instance);
+    //     if(instance!==null){
+    //       var finalInstance = instance;
+    //       finalInstance.errorCode = "00";
+    //       cb(null,finalInstance);
+    //     }else{
+    //       cb(null,{errorCode:"01"});
+    //     }
+    //   }
+    // );
   }
 
   Services.remoteMethod(
     'dashboardOwed',
     {
       accepts: [
-        {arg: 'data', type: 'object', http: {source: 'body'}}
+        {arg: 'username', type: 'string'}
       ],
       returns: {arg: 'data', type: 'object', root: true},
       http: {path: '/dashboardOwed', verb: 'post'}
@@ -99,4 +130,6 @@ module.exports = function(Services) {
       http: {path: '/dashboardOwing', verb: 'post'}
     }
   );
+
+
 };

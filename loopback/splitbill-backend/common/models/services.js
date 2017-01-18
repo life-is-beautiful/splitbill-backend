@@ -65,8 +65,8 @@ module.exports = function(Services) {
       },
       function(err,instance){
 
-        if(instance!==null && typeof username !== 'undefined'){
-          var finalInstance = instance;
+        if(instance!==null && instance.length!==0 && typeof username !== 'undefined'){
+          var finalInstance = instance[0];
           finalInstance.errorCode = "00";
           console.log(finalInstance);
           cb(null,finalInstance);
@@ -75,27 +75,6 @@ module.exports = function(Services) {
         }
       }
     );
-    // var Bills = Services.app.models.Bills;
-    // Bills.find({
-    //     fields: {
-    //       id: true, total:true, description:true
-    //     },
-    //     where:{
-    //       owedId:device, status:'Active'
-    //     },
-    //     include: 'owed'
-    //   },
-    //   function(err,instance){
-    //     console.log(instance);
-    //     if(instance!==null){
-    //       var finalInstance = instance;
-    //       finalInstance.errorCode = "00";
-    //       cb(null,finalInstance);
-    //     }else{
-    //       cb(null,{errorCode:"01"});
-    //     }
-    //   }
-    // );
   }
 
   Services.remoteMethod(
@@ -110,9 +89,18 @@ module.exports = function(Services) {
   );
 
   Services.dashboardOwing = function(data, cb) {
-    var Customer = Services.app.models.Customers;
-    Customer.findOne({fields: {id: false}, where:{device:device}},
+    var Customers = Services.app.models.Customers;
+    Customers.find({
+        fields: {
+          username: true
+        },
+        where:{
+          username:username
+        },
+        include: 'bills'
+      },
       function(err,instance){
+
         if(instance!==null && typeof username !== 'undefined'){
           var finalInstance = instance;
           finalInstance.errorCode = "00";
@@ -121,14 +109,15 @@ module.exports = function(Services) {
         }else{
           cb(null,{errorCode:"01"});
         }
-      });
+      }
+    );
   }
 
   Services.remoteMethod(
     'dashboardOwing',
     {
       accepts: [
-        {arg: 'data', type: 'object', http: {source: 'body'}}
+        {arg: 'username', type: 'string'}
       ],
       returns: {arg: 'data', type: 'object', root: true},
       http: {path: '/dashboardOwing', verb: 'post'}

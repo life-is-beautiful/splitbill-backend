@@ -31,6 +31,9 @@
     "tip": {
       "type": "number"
     },
+    "total": {
+      "type": "number"
+    },
     "status": {
       "type": "string",
       "comments": "(Paid / Awaiting Confirmation / Unpaid)"

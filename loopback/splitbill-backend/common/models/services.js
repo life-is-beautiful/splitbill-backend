@@ -63,7 +63,12 @@ module.exports = function(Services) {
         where:{
           username:username
         },
-        include: 'bills'
+        include: {
+          relation: 'bills',
+          scope: {
+            where: {status: 'Active'}
+          }
+        }
       },
       function(err,instance){
         if(instance!==null && instance.length!==0 && typeof username !== 'undefined'){

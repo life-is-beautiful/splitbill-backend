@@ -29,7 +29,9 @@ module.exports = function(Services) {
 
   Services.registerUser = function(data, cb) {
     var Customer = Services.app.models.Customers;
-    Customer.create(data,
+    Customer.findOrCreate(
+      {where: {username:data.username} },
+      data,
       function(err,instance){
         if(instance!==null && typeof data !== 'undefined'){
           var finalInstance = instance;
@@ -64,11 +66,9 @@ module.exports = function(Services) {
         include: 'bills'
       },
       function(err,instance){
-
         if(instance!==null && instance.length!==0 && typeof username !== 'undefined'){
           var finalInstance = instance[0];
           finalInstance.errorCode = "00";
-          console.log(finalInstance);
           cb(null,finalInstance);
         }else{
           cb(null,{errorCode:"01"});
@@ -88,7 +88,9 @@ module.exports = function(Services) {
     }
   );
 
-  Services.dashboardOwing = function(data, cb) {
+  Services.dashboardOwing = function(username, cb) {
+
+
     var Customers = Services.app.models.Customers;
     Customers.find({
         fields: {
@@ -100,11 +102,9 @@ module.exports = function(Services) {
         include: 'bills'
       },
       function(err,instance){
-
-        if(instance!==null && typeof username !== 'undefined'){
-          var finalInstance = instance;
+        if(instance!==null && instance.length!==0 && typeof username !== 'undefined'){
+          var finalInstance = instance[0];
           finalInstance.errorCode = "00";
-          console.log(finalInstance);
           cb(null,finalInstance);
         }else{
           cb(null,{errorCode:"01"});

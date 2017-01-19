@@ -7,10 +7,14 @@
     "validateUpsert": true
   },
   "properties": {
-    "giverId": {
+    "id": {
+      "type": "string",
+      "id": true
+    },
+    "owedId": {
       "type": "string"
     },
-    "receiverId": {
+    "owingId": {
       "type": "string"
     },
     "date": {

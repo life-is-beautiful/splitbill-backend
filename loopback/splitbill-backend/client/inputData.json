@@ -4,10 +4,10 @@
   "serviceCharge": 0,
   "amount": 100000,
   "total": 110000,
-  "owingId": "jehwriuew987yoiyoiyo",
+  "owedId": "jehwriuew987yoiyoiyo",
   "prices":"50000, 30000, 100000",
   "taxes":"5000, 3000, 10000",
   "serviceCharges":"0, 0, 0",
-  "total":"55000, 33000, 110000",
+  "totals":"55000, 33000, 110000",
   "owings":"oidsufoiufsapoiuf, opirewtiurewoturewt, rewltirewpoitrewpotr"
 }

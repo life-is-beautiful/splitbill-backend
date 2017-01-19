@@ -39,25 +39,25 @@
     "public": false
   },
   "Bills": {
-    "dataSource": "cloudant",
+    "dataSource": "db",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "Items": {
-    "dataSource": "cloudant",
+    "dataSource": "db",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "Payments": {
-    "dataSource": "cloudant",
+    "dataSource": "db",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "Customers": {
-    "dataSource": "cloudant",
+    "dataSource": "db",
     "public": true,
     "$promise": {},
     "$resolved": true

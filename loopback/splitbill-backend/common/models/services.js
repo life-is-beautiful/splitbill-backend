@@ -92,6 +92,40 @@ module.exports = function(Services) {
     }
   );
 
+  Services.dashboardOwedDetail = function(username, billId, cb) {
+    var Bills = Services.app.models.Bills;
+    Bills.find({
+        where:{
+          id:billId
+        },
+        include: {
+          relation: 'items',
+        }
+      },
+      function(err,instance){
+        if(instance!==null && instance.length!==0 && typeof billId !== 'undefined'){
+          var finalInstance = instance[0];
+          finalInstance.errorCode = "00";
+          cb(null,finalInstance);
+        }else{
+          cb(null,{errorCode:"01"});
+        }
+      }
+    );
+  }
+
+  Services.remoteMethod(
+    'dashboardOwedDetail',
+    {
+      accepts: [
+        {arg: 'username', type: 'string'},
+        {arg: 'billId', type: 'string'}
+      ],
+      returns: {arg: 'data', type: 'object', root: true},
+      http: {path: '/dashboardOwedDetail', verb: 'post'}
+    }
+  );
+
   Services.dashboardOwing = function(username, cb) {
     var Customers = Services.app.models.Customers;
     Customers.find({

@@ -1,0 +1,13 @@
+{
+  "description": "Restaurant",
+  "tax": 10,
+  "serviceCharge": 0,
+  "amount": 100000,
+  "total": 110000,
+  "owingId": "jehwriuew987yoiyoiyo",
+  "names": "nasi bakar, nasi ayam, nasi goreng",
+  "prices":"50000, 30000, 100000",
+  "taxes":"0, 0, 0",
+  "serviceCharges":"0, 0, 0",
+  "owings":"oidsufoiufsapoiuf, opirewtiurewoturewt, rewltirewpoitrewpotr"
+}

@@ -24,7 +24,7 @@
     },
     "status": {
       "type": "string"
-    }
+    },
     "billId": {
       "type": "string"
     }

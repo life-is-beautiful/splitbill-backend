@@ -129,12 +129,12 @@ module.exports = function(Services) {
   );
 
   Services.inputData = function(data, cb) {
-    var bills_instance = JSON.parse(JSON.stringify(data));;
-    delete bills_instance.item;
-    delete bills_instance.price;
-    delete bills_instance.tax;
-    delete bills_instance.serviceCharge;
-    delete bills_instance.username;
+    // var bills_instance = JSON.parse(JSON.stringify(data));;
+    // delete bills_instance.item;
+    // delete bills_instance.price;
+    // delete bills_instance.tax;
+    // delete bills_instance.serviceCharge;
+    // delete bills_instance.username;
 
     // var Bills = Services.app.models.Bills;
     // Bills.create(
@@ -150,47 +150,47 @@ module.exports = function(Services) {
     //   }
     // );
 
-    var items_names = data.names.split(',');
-    var items_prices = data.prices.split(',');
-    var items_taxes = data.taxes.split(',');
-    var items_serviceCharges = data.serviceCharges.split(',');
-    var items_usernames = data.usernames.split(',');
-    var items_owingId = new Array();
-
-    console.log(items_usernames.length);
-
-    for (var i = 0; i < items_usernames.length; i++) {
-      var items_name = items_names[i];
-      var items_price = items_prices[i];
-      var items_tax = items_taxes[i];
-      var items_serviceCharge = items_serviceCharges[i];
-      var Customers = Services.app.models.Customers;
-
-      console.log(items_usernames[i]);
-      Customers.findOrCreate({
-          fields: {id: true},
-          where:{username:items_usernames[i]}
-        },
-        {username:items_usernames[i]},
-        function(err,instance_customers){
-          var Items = Services.app.models.Items;
-          Items.create(
-            {
-              "name": items_name,
-              "price": items_price,
-              "tax": items_tax,
-              "serviceCharge": items_serviceCharge,
-              "owingId": instance_customers.id
-            },
-            function(err,instance_items){
-              console.log(instance_items);
-            }
-          );
-          console.log(instance_customers);
-        }
-      );
-    }
-    cb(null,data);
+    // var items_names = data.names.split(',');
+    // var items_prices = data.prices.split(',');
+    // var items_taxes = data.taxes.split(',');
+    // var items_serviceCharges = data.serviceCharges.split(',');
+    // var items_usernames = data.usernames.split(',');
+    // var items_owingId = new Array();
+    //
+    // console.log(items_usernames.length);
+    //
+    // for (var i = 0; i < items_usernames.length; i++) {
+    //   var items_name = items_names[i];
+    //   var items_price = items_prices[i];
+    //   var items_tax = items_taxes[i];
+    //   var items_serviceCharge = items_serviceCharges[i];
+    //   var Customers = Services.app.models.Customers;
+    //
+    //   console.log(items_usernames[i]);
+    //   Customers.findOrCreate({
+    //       fields: {id: true},
+    //       where:{username:items_usernames[i]}
+    //     },
+    //     {username:items_usernames[i]},
+    //     function(err,instance_customers){
+    //       var Items = Services.app.models.Items;
+    //       Items.create(
+    //         {
+    //           "name": items_name,
+    //           "price": items_price,
+    //           "tax": items_tax,
+    //           "serviceCharge": items_serviceCharge,
+    //           "owingId": instance_customers.id
+    //         },
+    //         function(err,instance_items){
+    //           console.log(instance_items);
+    //         }
+    //       );
+    //       console.log(instance_customers);
+    //     }
+    //   );
+    // }
+    // cb(null,data);
   }
 
   Services.remoteMethod(

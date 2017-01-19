@@ -22,9 +22,6 @@
     "amount": {
       "type": "number"
     },
-    "status": {
-      "type": "string"
-    },
     "billId": {
       "type": "string"
     }

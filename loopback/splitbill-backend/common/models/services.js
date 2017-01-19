@@ -54,9 +54,9 @@ module.exports = function(Services) {
   );
 
   Services.dashboardOwed = function(username, cb) {
-    var Customers = Services.app.models.Customers;
-    Customers.find({
-        fields: {
+          var Customers = Services.app.models.Customers;
+          Customers.find({
+              fields: {
           username: true
         },
         where:{
@@ -103,7 +103,22 @@ module.exports = function(Services) {
         where:{
           username:username
         },
-        include: 'bills'
+        include: [
+          {
+            relation: 'items',
+            scope: {
+              where: {status: 'Unpaid'},
+              include: {
+                relation: 'bill',
+                scope: {
+                  where: {status: 'Active'},
+                  include: 'owed'
+                }
+              }
+            }
+          }
+
+        ]
       },
       function(err,instance){
         if(instance!==null && instance.length!==0 && typeof username !== 'undefined'){

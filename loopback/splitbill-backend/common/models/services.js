@@ -183,6 +183,7 @@ module.exports = function(Services) {
     delete bills_instance.serviceCharges;
     delete bills_instance.totals;
     delete bills_instance.owings;
+    bills_instance.status='Active';
 
     var Bills = Services.app.models.Bills;
     Bills.create(
